@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#fdf8f3">
+<title>Pick a game</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235b8def'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Cpath d='M16 10.5V16l4 2.6' stroke='%23fff' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#1b1f2a; --muted:#6b7280; --paper:#fdf8f3;
+    --clock:#5b8def; --spell:#f2849e; --maths:#4bbf8a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100svh; padding:clamp(18px,5vw,44px);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    color:var(--ink); background:var(--paper);
+    display:flex; flex-direction:column; gap:clamp(16px,4vw,32px);
+    -webkit-tap-highlight-color:transparent;
+  }
+  header{display:flex; flex-direction:column; gap:4px}
+  h1{margin:0; font-size:clamp(26px,6vw,40px); letter-spacing:-.02em}
+  header p{margin:0; color:var(--muted); font-size:clamp(14px,3.4vw,17px)}
+  .grid{
+    display:grid; gap:clamp(12px,3vw,20px);
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    max-width:960px;
+  }
+  a.card{
+    display:flex; align-items:center; gap:16px; text-decoration:none; color:var(--ink);
+    background:#fff; border:2px solid #eee6de; border-radius:22px;
+    padding:clamp(18px,4vw,26px); min-height:104px;
+    box-shadow:0 2px 0 #eee6de, 0 10px 26px -18px rgba(27,31,42,.5);
+    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    touch-action:manipulation;
+  }
+  a.card:hover{border-color:var(--accent); transform:translateY(-2px)}
+  a.card:active{transform:translateY(1px); box-shadow:0 2px 0 #eee6de}
+  a.card:focus-visible{outline:3px solid var(--accent); outline-offset:3px}
+  .glyph{
+    flex:0 0 auto; width:clamp(52px,13vw,64px); height:clamp(52px,13vw,64px);
+    border-radius:16px; display:grid; place-items:center;
+    background:color-mix(in srgb, var(--accent) 16%, #fff);
+    border:2px solid color-mix(in srgb, var(--accent) 34%, #fff);
+  }
+  .glyph svg{width:60%; height:60%; stroke:var(--accent); fill:none;
+    stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
+  .label{display:flex; flex-direction:column; gap:2px; min-width:0}
+  .label b{font-size:clamp(17px,4.2vw,21px); font-weight:650}
+  .label span{color:var(--muted); font-size:clamp(13px,3.2vw,15px)}
+  .clock{--accent:var(--clock)} .spell{--accent:var(--spell)} .maths{--accent:var(--maths)}
+  footer{margin-top:auto; color:var(--muted); font-size:13px}
+  @media (prefers-reduced-motion:reduce){a.card{transition:none}}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Pick a game</h1>
+    <p>Three things to play. Tap one.</p>
+  </header>
+
+  <main class="grid">
+    <!-- One <a class="card"> per site. Add a card below, bump the <p> count above. -->
+    <a class="card clock" href="https://clock.zt489.com/">
+      <span class="glyph" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2.2"/></svg>
+      </span>
+      <span class="label"><b>What time is it?</b><span>Read the clock</span></span>
+    </a>
+
+    <a class="card spell" href="https://spelling.zt489.com/">
+      <span class="glyph" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 9.5v5M7.5 7v10M20 9.5v5M16.5 7v10M7.5 12h9"/></svg>
+      </span>
+      <span class="label"><b>Sound practice</b><span>Spelling and sounds</span></span>
+    </a>
+
+    <a class="card maths" href="https://maths.zt489.com/">
+      <span class="glyph" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></svg>
+      </span>
+      <span class="label"><b>Fun maths</b><span>Adding up</span></span>
+    </a>
+  </main>
+
+  <footer>Ip family · zt489.com</footer>
+</body>
+</html>
